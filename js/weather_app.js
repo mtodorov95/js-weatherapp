@@ -56,14 +56,16 @@ function displayForecast(weather){
 }
 
 function createDay(day, to_add){
-    
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let n = now.getDay() + to_add;
+    let name = n <= 6 ? days[n] : days[n - 7];
     const item = document.createElement('div');
     item.classList.add('day');
     
-    item.innerHTML = `<div class="name"></div>
+    item.innerHTML = `<div class="name">${name}</div>
                         <div class="temp">${Math.round(day.temp.max)}° / ${Math.round(day.temp.min)}°</div>
                         <div class="weather">${day.weather[0].main}</div>`;
-    forecast.appendChild(item);                    
+    forecast.appendChild(item);                   
 }
 
 function dateBuilder(d){
